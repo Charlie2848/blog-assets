@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' expr:dir='data:blog.languageDirection' lang='ko' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <b:include data='blog' name='all-head-content'/>
+  <title><b:if cond='data:view.isHomepage'><data:blog.title.escaped/><b:else/><data:view.title.escaped/> | <data:blog.title.escaped/></b:if></title>
+  <link href='https://fonts.googleapis.com' rel='preconnect'/>
+  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+  <link href='https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&amp;family=Gowun+Dodum&amp;display=swap' rel='stylesheet'/>
+  <b:skin version='1.0.0'><![CDATA[
+/* -----------------------------------------------
+   Theme : 찰리의 반도체 따라잡기 — 손그림 노트 (charlie-notebook) 1.0.0
+   Built : 2026-10-13 · source theme/build_theme.py
+----------------------------------------------- */
+
+/* ===== 테마 토큰 ===== */
+:root{
+  --paper:#fbf7ee; --paper-2:#f4eedf; --card:#fffdf7;
+  --ink:#2f2b26; --ink-soft:#6b6358; --line:rgba(96,140,190,.16);
+  --teal:#2a9d8f; --amber:#f4a261; --hl:#ffe58a; --red:#e76f51; --blue:#4a7fc1;
+  --sketch:255px 15px 225px 15px/15px 225px 15px 255px;
+  --sketch-2:15px 255px 15px 225px/225px 15px 255px 15px;
+  --hand:'Gaegu',cursive; --body:'Gowun Dodum',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.85;
+  word-break:keep-all; overflow-wrap:anywhere;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+a{color:var(--blue);text-decoration:none;background:linear-gradient(transparent 70%,rgba(74,127,193,.18) 70%)}
+a:hover{background:linear-gradient(transparent 55%,var(--hl) 55%)}
+img{max-width:100%;height:auto}
+
+/* ===== 헤더 ===== */
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header.site{padding:34px 0 10px}
+.brand{display:flex;align-items:center;gap:18px}
+.avatar{width:84px;height:84px;flex:none;border-radius:50%;border:2.5px solid var(--ink);
+  background:#fff center/cover no-repeat;box-shadow:3px 4px 0 rgba(47,43,38,.15);transform:rotate(-3deg)}
+.brand h1{margin:0;font-family:var(--hand);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1.05;letter-spacing:-.5px}
+.brand h1 span{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%);padding:0 4px}
+.brand p{margin:6px 0 0;color:var(--ink-soft);font-size:15px}
+nav.top{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 4px}
+nav.top a{font-family:var(--hand);font-size:21px;font-weight:700;color:var(--ink);background:none;
+  padding:2px 14px;border:2px solid var(--ink);border-radius:var(--sketch);background:var(--card)}
+nav.top a:hover{background:var(--hl)}
+nav.top a.on{background:var(--ink);color:var(--paper)}
+
+/* 진도 막대 */
+.progress{margin:18px 0 6px;display:flex;align-items:center;gap:12px;font-family:var(--hand);font-size:20px;font-weight:700}
+.progress .bar{flex:1;height:20px;border:2px solid var(--ink);border-radius:var(--sketch);background:var(--card);overflow:hidden;position:relative}
+.progress .fill{position:absolute;inset:0 auto 0 0;background:repeating-linear-gradient(-45deg,var(--teal) 0 6px,#38b3a4 6px 12px)}
+.progress .num{white-space:nowrap}
+
+/* ===== 레이아웃 ===== */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;padding:18px 0 60px}
+@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}}
+
+/* ===== 홈: 글 카드 ===== */
+.list-title{font-family:var(--hand);font-size:28px;font-weight:700;margin:6px 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px}
+.card{position:relative;background:var(--card);border:2px solid var(--ink);border-radius:var(--sketch);
+  padding:16px 16px 14px;box-shadow:4px 5px 0 rgba(47,43,38,.12);transition:transform .15s}
+.card:nth-child(odd){transform:rotate(-.6deg)} .card:nth-child(even){transform:rotate(.7deg)}
+.card:hover{transform:rotate(0) translateY(-3px)}
+.card::before{content:"";position:absolute;top:-12px;left:50%;width:86px;height:24px;margin-left:-43px;
+  background:rgba(244,162,97,.55);transform:rotate(-4deg);border-left:2px dashed rgba(255,255,255,.6);border-right:2px dashed rgba(255,255,255,.6)}
+.card .thumb{aspect-ratio:4/3;border-radius:6px;background:#fff center/cover no-repeat;border:1.5px solid rgba(47,43,38,.25);margin-bottom:12px}
+.card h3{margin:6px 0 6px;font-size:18px;line-height:1.45}
+.card h3 a{color:var(--ink);background:none}
+.card p{margin:0;font-size:14.5px;line-height:1.7;color:var(--ink-soft)}
+.card .date{display:block;margin-top:10px;font-family:var(--hand);font-size:17px;color:var(--ink-soft)}
+.stamp{display:inline-block;font-family:var(--hand);font-weight:700;font-size:18px;line-height:1;padding:5px 10px 3px;
+  border:2px solid var(--red);color:var(--red);border-radius:var(--sketch-2);transform:rotate(-4deg);background:rgba(231,111,81,.06)}
+.stamp.sub{border-color:var(--blue);color:var(--blue);background:rgba(74,127,193,.06)}
+.card.ghost{border-style:dashed;box-shadow:none;background:rgba(255,253,247,.55);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:240px;color:var(--ink-soft)}
+.card.ghost::before{display:none}
+.card.ghost b{font-family:var(--hand);font-size:24px;color:var(--ink)}
+
+/* ===== 글 화면 ===== */
+article.post{background:var(--card);border:2px solid var(--ink);border-radius:18px 6px 14px 8px/8px 14px 6px 18px;
+  padding:34px clamp(18px,4vw,48px) 40px;box-shadow:5px 6px 0 rgba(47,43,38,.10);position:relative}
+article.post::before{content:"";position:absolute;left:clamp(10px,2.4vw,28px);top:0;bottom:0;border-left:2px solid rgba(231,111,81,.35)}
+.post-head .stamps{display:flex;gap:10px;margin-bottom:12px}
+.post-head h1{margin:0 0 10px;font-family:var(--hand);font-weight:700;font-size:clamp(30px,4.4vw,42px);line-height:1.2}
+.meta{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;color:var(--ink-soft);font-size:14.5px}
+.tape{display:inline-block;padding:1px 10px;font-size:13.5px;background:rgba(42,157,143,.16);border-left:3px solid var(--teal);transform:rotate(-1deg)}
+.tape:nth-child(even){background:rgba(244,162,97,.2);border-color:var(--amber);transform:rotate(1deg)}
+
+/* 자동 목차 = 포스트잇 */
+.toc{margin:26px 0 30px;padding:16px 20px 14px 22px;background:#fff6b8;border-radius:2px;
+  box-shadow:2px 3px 0 rgba(47,43,38,.12),0 12px 18px -14px rgba(47,43,38,.45);transform:rotate(-.8deg);max-width:560px}
+.toc strong{font-family:var(--hand);font-size:23px}
+.toc ol{margin:6px 0 0;padding-left:22px;font-size:15px;line-height:1.75}
+.toc ol ol{list-style:"– ";padding-left:16px;color:var(--ink-soft);font-size:14px}
+.toc a{color:var(--ink);background:none}
+.toc a:hover{background:var(--hl)}
+
+/* 본문 */
+.post-body{font-size:17px}
+.post-body h2{margin:2.4em 0 .8em;font-family:var(--hand);font-weight:700;font-size:31px;line-height:1.25;scroll-margin-top:60px}
+.post-body h2::before{content:"✎ ";color:var(--red);font-size:.85em}
+.post-body h2 span.hl{background:linear-gradient(transparent 55%,var(--hl) 55%,var(--hl) 90%,transparent 90%);padding:0 4px}
+.post-body h3{margin:2em 0 .6em;font-size:19.5px;line-height:1.5;scroll-margin-top:60px;display:inline-block;
+  padding-bottom:2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='8' viewBox='0 0 120 8'%3E%3Cpath d='M1 5 Q 15 1 30 5 T 60 5 T 90 5 T 119 4' fill='none' stroke='%232a9d8f' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left bottom/120px 8px}
+.post-body p{margin:0 0 1.1em}
+.post-body ul{padding-left:4px;list-style:none}
+.post-body ul li{position:relative;padding-left:28px;margin:.45em 0}
+.post-body ul li::before{content:"";position:absolute;left:2px;top:.55em;width:15px;height:13px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 14'%3E%3Cpath d='M1.5 7.5 L6 12 L14.5 1.5' fill='none' stroke='%23e76f51' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
+.post-body > h2:first-child + ul{background:rgba(42,157,143,.08);border:2px dashed var(--teal);border-radius:var(--sketch);padding:14px 18px 10px 10px}
+.post-body figure{position:relative;margin:2em auto !important;padding:12px 12px 8px;background:#fff;max-width:760px;
+  border:1.5px solid rgba(47,43,38,.18);box-shadow:3px 4px 0 rgba(47,43,38,.10);transform:rotate(-.4deg)}
+.post-body figure:nth-of-type(even){transform:rotate(.4deg)}
+.post-body figure::before{content:"";position:absolute;top:-11px;left:22px;width:70px;height:22px;background:rgba(42,157,143,.35);transform:rotate(-6deg)}
+.post-body figure::after{content:"";position:absolute;top:-11px;right:22px;width:70px;height:22px;background:rgba(244,162,97,.45);transform:rotate(5deg)}
+.post-body figcaption{font-family:var(--hand) !important;font-size:18px !important;color:var(--ink-soft) !important;line-height:1.45;margin-top:.5em !important}
+.post-body table{border-collapse:separate !important;border-spacing:0;width:100%;font-size:15px;line-height:1.6;
+  border:2px solid var(--ink);border-radius:var(--sketch);overflow:hidden;background:#fff;margin:1.4em 0 !important}
+.post-body th,.post-body td{border:0 !important;border-bottom:1.5px dashed rgba(47,43,38,.25) !important;padding:9px 12px !important;vertical-align:top;text-align:left}
+.post-body th{background:var(--paper-2) !important;font-family:var(--hand);font-size:18px;font-weight:700}
+.post-body tr:last-child td{border-bottom:0 !important}
+.table-scroll{overflow-x:auto}
+.post-body hr{border:0;height:10px;margin:2.4em 0 1.4em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='10' viewBox='0 0 200 10'%3E%3Cpath d='M2 6 Q 25 1 50 5 T 100 5 T 150 6 T 198 4' fill='none' stroke='%236b6358' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center/200px 10px}
+.post-body hr + p{font-size:14.5px;color:var(--ink-soft)}
+
+/* 이전/다음 편 */
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.pager a{display:block;padding:12px 16px;border:2px solid var(--ink);border-radius:var(--sketch);background:var(--card);color:var(--ink);font-size:15px;line-height:1.5}
+.pager a small{display:block;font-family:var(--hand);font-size:18px;font-weight:700;color:var(--red)}
+.pager a.next{text-align:right}
+.pager a.disabled{opacity:.45;pointer-events:none;border-style:dashed}
+.comments{margin-top:34px;padding:18px 20px;border:2px dashed rgba(47,43,38,.35);border-radius:var(--sketch);color:var(--ink-soft);font-size:15px}
+.comments b{font-family:var(--hand);font-size:22px;color:var(--ink)}
+
+/* ===== 사이드바 ===== */
+aside.side{display:flex;flex-direction:column;gap:26px}
+.widget{background:var(--card);border:2px solid var(--ink);border-radius:var(--sketch-2);padding:16px 18px;box-shadow:3px 4px 0 rgba(47,43,38,.10)}
+.widget h4{margin:0 0 10px;font-family:var(--hand);font-size:24px;font-weight:700}
+.widget h4::after{content:"";display:block;width:64px;height:6px;margin-top:2px;background:var(--hl);border-radius:4px;transform:rotate(-1.5deg)}
+.about{display:flex;gap:12px;align-items:center;font-size:14.5px;line-height:1.6}
+.about .avatar{width:64px;height:64px;transform:rotate(3deg)}
+.days{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;font-family:var(--hand);font-size:15px;text-align:center}
+.days span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(47,43,38,.35);border-radius:6px 3px 7px 4px;color:var(--ink-soft);background:#fff}
+.days span.done{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:700}
+.days span.today{border:2px dashed var(--red);color:var(--red);font-weight:700}
+.days-legend{margin-top:8px;font-size:13px;color:var(--ink-soft)}
+.labels{display:flex;flex-wrap:wrap;gap:8px}
+.labels a{font-size:13.5px;padding:2px 10px;border:1.5px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink)}
+.labels a:hover{background:var(--hl)}
+.labels a i{font-style:normal;color:var(--ink-soft);margin-left:3px}
+.series{margin:0;padding-left:0;list-style:none;font-size:14.5px;line-height:1.6}
+.series li{padding:6px 0;border-bottom:1.5px dashed rgba(47,43,38,.2)}
+.series li:last-child{border-bottom:0}
+.series li b{font-family:var(--hand);font-size:17px;color:var(--red);margin-right:4px}
+.series a{color:var(--ink);background:none}
+
+footer.site{padding:26px 0 40px;text-align:center;color:var(--ink-soft);font-size:14px;border-top:2px dashed rgba(47,43,38,.25)}
+footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
+
+/* 모바일 */
+@media (max-width:600px){
+  body{font-size:16px}
+  .brand{gap:12px} .avatar{width:64px;height:64px}
+  .brand h1{font-size:32px}
+  .brand p{font-size:14px}
+  nav.top a{font-size:18px;padding:1px 10px}
+  .post-body h2{font-size:26px}
+  .pager{grid-template-columns:1fr}
+  .pager a.next{text-align:left}
+}
+
+/* ===== 테마 전용 추가 ===== */
+.toc[hidden]{display:none}
+.card a.thumb{display:block;background-color:#fff;background-position:center;background-size:cover;background-repeat:no-repeat}
+.card .card-stamps{display:flex;gap:8px;min-height:4px}
+.more{margin:28px 0 0;text-align:center}
+.more a{display:inline-block;font-family:var(--hand);font-size:21px;font-weight:700;color:var(--ink);padding:4px 18px;border:2px solid var(--ink);border-radius:var(--sketch);background:var(--card)}
+.meta a.tape{color:var(--ink);background-image:none}
+.comments-wrap{margin-top:34px;padding:18px 20px;border:2px dashed rgba(47,43,38,.35);border-radius:var(--sketch);font-size:15px}
+.comments-wrap h3,.comments-wrap h4{font-family:var(--hand);font-size:24px;margin:0 0 10px}
+.post-body img{max-width:100%;height:auto}
+
+]]></b:skin>
+</head>
+<body>
+<div class='wrap'>
+  <header class='site'>
+    <div class='brand'>
+      <div aria-label='찰리 프로필' class='avatar' role='img' style='background-image:url(https://cdn.jsdelivr.net/gh/Charlie2848/blog-assets@4cee898/profile/charlie_profile_b1.jpg)'></div>
+      <div>
+        <h1><a expr:href='data:blog.homepageUrl' style='color:inherit;background:none'><span><data:blog.title/></span></a></h1>
+        <p>폴리텍 청주 「피지컬AI 반도체 제조 실무과정」 8주, 하루 한 편씩 비유와 손그림으로 정리하는 복습 노트</p>
+      </div>
+    </div>
+    <nav aria-label='블로그 메뉴' class='top'>
+      <a expr:class='data:view.isHomepage ? "on" : ""' expr:href='data:blog.homepageUrl'>홈</a>
+      <a expr:href='data:blog.homepageUrl + "search/label/%ED%94%BC%EC%A7%80%EC%BB%ACAI%EB%B0%98%EB%8F%84%EC%B2%B4%EA%B3%BC%EC%A0%95?max-results=50"'>전체 노트</a>
+      <a href='https://www.blogger.com/profile/14778092391773223709'>쓰는 사람</a>
+    </nav>
+    <div aria-label='진도' class='progress'>
+      <span>진도</span>
+      <div class='bar'><div class='fill' style='width:0'></div></div>
+      <span class='num'>… / 40일차</span>
+    </div>
+  </header>
+
+  <div class='layout'>
+    <main>
+      <b:section class='main' id='main' maxwidgets='1' showaddelement='no'>
+        <b:widget id='Blog1' locked='true' title='블로그 게시물' type='Blog' version='2' visible='true'>
+          <b:includable id='main'>
+            <b:if cond='data:view.isSingleItem'>
+              <b:loop values='data:posts' var='post'>
+                <article class='post'>
+                  <div class='post-head' expr:data-title='data:post.title'>
+                    <div class='stamps'></div>
+                    <h1><data:post.title/></h1>
+                    <div class='meta'>
+                      <b:if cond='data:view.isPost'><span><data:post.date/> · <data:post.author.name/></span></b:if>
+                      <b:loop values='data:post.labels' var='label'><a class='tape' expr:href='data:label.url'>#<data:label.name/></a></b:loop>
+                    </div>
+                  </div>
+                  <nav aria-label='이 글의 목차' class='toc' hidden='hidden'><strong>이 글에서 배울 것</strong><ol></ol></nav>
+                  <div class='post-body'><data:post.body/></div>
+                  <b:if cond='data:view.isPost'>
+                    <div class='pager'>
+                      <b:if cond='data:olderPageUrl'>
+                        <a expr:href='data:olderPageUrl'><small>← 이전 편</small><span class='pt'>이전 글</span></a>
+                      <b:else/>
+                        <a class='disabled'><small>← 이전 편</small>첫 글이야</a>
+                      </b:if>
+                      <b:if cond='data:newerPageUrl'>
+                        <a class='next' expr:href='data:newerPageUrl'><small>다음 편 →</small><span class='pt'>다음 글</span></a>
+                      <b:else/>
+                        <a class='next disabled'><small>다음 편 →</small>다음 편 준비 중</a>
+                      </b:if>
+                    </div>
+                    <div class='comments-wrap'>
+                      <b:include data='post' name='commentPicker'/>
+                    </div>
+                  </b:if>
+                </article>
+              </b:loop>
+            <b:else/>
+              <div class='list-title'>
+                <b:if cond='data:view.isLabelSearch'>#<data:view.search.label/> 노트<b:elseif cond='data:view.isSearch'/>찾은 노트<b:else/>최근 노트</b:if>
+              </div>
+              <div class='cards'>
+                <b:loop values='data:posts' var='post'>
+                  <div class='card' expr:data-title='data:post.title'>
+                    <b:if cond='data:post.featuredImage'>
+                      <a class='thumb' expr:href='data:post.url' expr:style='"background-image:url(" + data:post.featuredImage + ")"' tabindex='-1'></a>
+                    </b:if>
+                    <div class='card-stamps'></div>
+                    <h3><a expr:href='data:post.url'><data:post.title/></a></h3>
+                    <p><b:eval expr='snippet(data:post.body, {length: 110, links: false, linebreaks: false})'/></p>
+                    <span class='date'><data:post.date/></span>
+                  </div>
+                </b:loop>
+                <b:if cond='data:view.isHomepage'>
+                  <div class='card ghost'><b>다음 일차</b>수업 끝나면 곧 올라와요</div>
+                </b:if>
+              </div>
+              <b:if cond='data:olderPageUrl'>
+                <div class='more'><a expr:href='data:olderPageUrl'>지난 노트 더 보기 →</a></div>
+              </b:if>
+            </b:if>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </main>
+
+    <aside class='side'>
+      <div class='widget'>
+        <h4>쓰는 사람</h4>
+        <div class='about'>
+          <div class='avatar' style='background-image:url(https://cdn.jsdelivr.net/gh/Charlie2848/blog-assets@4cee898/profile/charlie_profile_b1.jpg)'></div>
+          <div><b>찰리</b><br/>반도체 비전공자. 8주 동안 매일 배운 걸 내 말로 다시 써 보는 중.</div>
+        </div>
+      </div>
+      <div class='widget'>
+        <h4>40일 출석부</h4>
+        <div class='days' id='days'></div>
+        <div class='days-legend'>초록 = 글 올린 날 · 빨간 점선 = 다음 편</div>
+      </div>
+      <div class='widget'>
+        <h4>연재 목차</h4>
+        <ul class='series' id='series'><li>불러오는 중…</li></ul>
+      </div>
+      <b:section class='sidebar' id='sidebar' maxwidgets='3' showaddelement='yes'>
+        <b:widget id='Label1' locked='false' title='라벨' type='Label' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='sorting'>FREQUENCY</b:widget-setting>
+            <b:widget-setting name='display'>CLOUD</b:widget-setting>
+            <b:widget-setting name='selectedLabelsList'/>
+            <b:widget-setting name='showType'>ALL</b:widget-setting>
+            <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <div class='widget'>
+              <h4>라벨</h4>
+              <div class='labels'>
+                <b:loop values='data:labels' var='label'><a expr:href='data:label.url'>#<data:label.name/><i><data:label.count/></i></a></b:loop>
+              </div>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </aside>
+  </div>
+
+  <footer class='site'><b><data:blog.title/></b><br/>강의를 듣고 내가 다시 정리한 노트야. 슬라이드·녹음 원문은 싣지 않아. · <a expr:href='data:blog.homepageUrl + "p/blog-page.html"'>개인정보처리방침</a></footer>
+</div>
+<script>//<![CDATA[
+/* 찰리의 반도체 따라잡기 — 손그림 노트 테마 스크립트 (Blogger XML에 그대로 들어감) */
+(function () {
+  var SERIES_LABEL = '피지컬AI반도체과정';
+  var TOTAL_DAYS = 40;
+  var PREFIX = /^피지컬AI 반도체\s*/;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); };
+  var dayOf = function (t) { var m = t.match(/(\d+)일차/); return m ? m[1] : ''; };
+  var isSub = function (t) { return /보충/.test(t); };
+  var stampHtml = function (t) {
+    var d = dayOf(t);
+    return d ? '<span class="stamp">' + d + '일차</span>' + (isSub(t) ? '<span class="stamp sub">보충</span>' : '') : '';
+  };
+  // 카드·목차용 짧은 제목: 「피지컬AI 반도체 1일차 | 」 앞부분을 뗀다
+  var shortTitle = function (t) { return t.replace(PREFIX, '').replace(/^\d+일차( 보충)?\s*\|\s*/, ''); };
+
+  // ── 홈·목록 카드 ──
+  $$('.card[data-title]').forEach(function (c) {
+    var t = c.getAttribute('data-title');
+    var s = $('.card-stamps', c); if (s) s.innerHTML = stampHtml(t);
+    var a = $('h3 a', c); if (a && dayOf(t)) a.textContent = shortTitle(t);
+  });
+
+  // ── 글 화면 ──
+  var body = $('.post-body');
+  var head = $('.post-head');
+  if (body && head) {
+    var full = head.getAttribute('data-title') || '';
+    var st = $('.stamps', head); if (st) st.innerHTML = stampHtml(full);
+    var h1 = $('h1', head); if (h1 && dayOf(full)) h1.textContent = full.replace(PREFIX, '');
+    // 본문 끝 「연재 내비게이션」 목록은 아래 이전/다음 편 버튼이 대신한다
+    $$('h2', body).forEach(function (h) {
+      if (h.textContent.indexOf('연재 내비게이션') > -1) {
+        var ul = h.nextElementSibling; if (ul && ul.tagName === 'UL') ul.parentNode.removeChild(ul);
+        h.parentNode.removeChild(h);
+      }
+    });
+    $$('table', body).forEach(function (t) {
+      var w = document.createElement('div'); w.className = 'table-scroll';
+      t.parentNode.insertBefore(w, t); w.appendChild(t);
+    });
+    var toc = [], cur = null, n = 0;
+    $$('h2, h3', body).forEach(function (h) {
+      if (!h.id) h.id = 'sec-' + (++n);
+      if (h.tagName === 'H2') { h.innerHTML = '<span class="hl">' + h.innerHTML + '</span>'; cur = {h: h, kids: []}; toc.push(cur); }
+      else if (cur) cur.kids.push(h);
+    });
+    var box = $('.toc');
+    if (box && toc.length >= 3) {
+      $('ol', box).innerHTML = toc.map(function (t) {
+        return '<li><a href="#' + t.h.id + '">' + esc(t.h.textContent) + '</a>' +
+          (t.kids.length ? '<ol>' + t.kids.map(function (k) { return '<li><a href="#' + k.id + '">' + esc(k.textContent) + '</a></li>'; }).join('') + '</ol>' : '') + '</li>';
+      }).join('');
+      box.hidden = false;
+    }
+  }
+
+  // ── 진도 막대·40일 출석부·연재 목차: 연재 라벨 피드에서 계산 ──
+  var feed = '/feeds/posts/summary/-/' + encodeURIComponent(SERIES_LABEL) + '?alt=json&max-results=150';
+  fetch(feed).then(function (r) { return r.json(); }).then(function (j) {
+    var entries = ((j.feed || {}).entry || []).map(function (e) {
+      var link = (e.link || []).filter(function (l) { return l.rel === 'alternate'; })[0];
+      return {title: e.title.$t, url: link ? link.href : '#', published: e.published.$t};
+    }).filter(function (e) { return dayOf(e.title); });
+    entries.sort(function (a, b) { return a.published < b.published ? -1 : 1; });
+    var done = {}, maxDay = 0;
+    entries.forEach(function (e) { var d = +dayOf(e.title); done[d] = true; if (d > maxDay) maxDay = d; });
+    $$('.progress .fill').forEach(function (f) { f.style.width = (maxDay / TOTAL_DAYS * 100) + '%'; });
+    $$('.progress .num').forEach(function (x) { x.textContent = maxDay + ' / ' + TOTAL_DAYS + '일차'; });
+    var days = $('#days');
+    if (days) {
+      var html = '';
+      for (var i = 1; i <= TOTAL_DAYS; i++) html += '<span class="' + (done[i] ? 'done' : i === maxDay + 1 ? 'today' : '') + '">' + i + '</span>';
+      days.innerHTML = html;
+    }
+    var series = $('#series');
+    if (series) {
+      series.innerHTML = entries.map(function (e) {
+        return '<li><b>' + dayOf(e.title) + (isSub(e.title) ? '+' : '') + '</b><a href="' + esc(e.url) + '">' + esc(shortTitle(e.title)) + '</a></li>';
+      }).join('') || '<li>아직 글이 없어</li>';
+    }
+    // 이전/다음 편 버튼에 실제 글 제목을 채운다
+    var here = location.href.split(/[?#]/)[0];
+    $$('.pager a[href]').forEach(function (a) {
+      var target = a.getAttribute('href').split(/[?#]/)[0];
+      var hit = entries.filter(function (e) { return e.url.split(/[?#]/)[0] === target && target !== here; })[0];
+      var pt = $('.pt', a); if (hit && pt) pt.textContent = hit.title.replace(PREFIX, '');
+    });
+  }).catch(function () {});
+})();
+
+//]]></script>
+</body>
+</html>
