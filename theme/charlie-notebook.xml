@@ -140,9 +140,9 @@ article.post::before{content:"";position:absolute;left:clamp(10px,2.4vw,28px);to
 
 /* ===== 사이드바 ===== */
 aside.side{display:flex;flex-direction:column;gap:26px}
-.widget{background:var(--card);border:2px solid var(--ink);border-radius:var(--sketch-2);padding:16px 18px;box-shadow:3px 4px 0 rgba(47,43,38,.10)}
-.widget h4{margin:0 0 10px;font-family:var(--hand);font-size:24px;font-weight:700}
-.widget h4::after{content:"";display:block;width:64px;height:6px;margin-top:2px;background:var(--hl);border-radius:4px;transform:rotate(-1.5deg)}
+.box,.widget.Label{background:var(--card);border:2px solid var(--ink);border-radius:var(--sketch-2);padding:16px 18px;box-shadow:3px 4px 0 rgba(47,43,38,.10)}
+.box h4,.widget.Label h4{margin:0 0 10px;font-family:var(--hand);font-size:24px;font-weight:700}
+.box h4::after,.widget.Label h4::after{content:"";display:block;width:64px;height:6px;margin-top:2px;background:var(--hl);border-radius:4px;transform:rotate(-1.5deg)}
 .about{display:flex;gap:12px;align-items:center;font-size:14.5px;line-height:1.6}
 .about .avatar{width:64px;height:64px;transform:rotate(3deg)}
 .days{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;font-family:var(--hand);font-size:15px;text-align:center}
@@ -185,6 +185,8 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
 .comments-wrap{margin-top:34px;padding:18px 20px;border:2px dashed rgba(47,43,38,.35);border-radius:var(--sketch);font-size:15px}
 .comments-wrap h3,.comments-wrap h4{font-family:var(--hand);font-size:24px;margin:0 0 10px}
 .post-body img{max-width:100%;height:auto}
+
+.widget.Blog{margin:0;padding:0;border:0;background:none;box-shadow:none}
 
 ]]></b:skin>
 </head>
@@ -277,19 +279,19 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
     </main>
 
     <aside class='side'>
-      <div class='widget'>
+      <div class='box'>
         <h4>쓰는 사람</h4>
         <div class='about'>
           <div class='avatar' style='background-image:url(https://cdn.jsdelivr.net/gh/Charlie2848/blog-assets@4cee898/profile/charlie_profile_b1.jpg)'></div>
           <div><b>찰리</b><br/>반도체 비전공자. 8주 동안 매일 배운 걸 내 말로 다시 써 보는 중.</div>
         </div>
       </div>
-      <div class='widget'>
+      <div class='box'>
         <h4>40일 출석부</h4>
         <div class='days' id='days'></div>
         <div class='days-legend'>초록 = 글 올린 날 · 빨간 점선 = 다음 편</div>
       </div>
-      <div class='widget'>
+      <div class='box'>
         <h4>연재 목차</h4>
         <ul class='series' id='series'><li>불러오는 중…</li></ul>
       </div>
@@ -303,11 +305,9 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
             <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
           </b:widget-settings>
           <b:includable id='main'>
-            <div class='widget'>
-              <h4>라벨</h4>
-              <div class='labels'>
-                <b:loop values='data:labels' var='label'><a expr:href='data:label.url'>#<data:label.name/><i><data:label.count/></i></a></b:loop>
-              </div>
+            <h4>라벨</h4>
+            <div class='labels'>
+              <b:loop values='data:labels' var='label'><a expr:href='data:label.url'>#<data:label.name/><i><data:label.count/></i></a></b:loop>
             </div>
           </b:includable>
         </b:widget>
@@ -340,6 +340,7 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
     var t = c.getAttribute('data-title');
     var s = $('.card-stamps', c); if (s) s.innerHTML = stampHtml(t);
     var a = $('h3 a', c); if (a && dayOf(t)) a.textContent = shortTitle(t);
+    var p = $('p', c); if (p) p.textContent = p.textContent.replace(/^\s*오늘 3줄 요약\s*/, '');
   });
 
   // ── 글 화면 ──
