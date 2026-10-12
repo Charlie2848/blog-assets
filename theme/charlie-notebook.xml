@@ -212,8 +212,8 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
 
   <div class='layout'>
     <main>
-      <b:section class='main' id='main' maxwidgets='1' showaddelement='no'>
-        <b:widget id='Blog1' locked='true' title='블로그 게시물' type='Blog' version='2' visible='true'>
+      <b:section class='main' id='page_body' name='Page Body' showaddelement='false'>
+        <b:widget id='Blog1' locked='true' title='블로그 게시물' type='Blog' visible='true'>
           <b:includable id='main'>
             <b:if cond='data:view.isSingleItem'>
               <b:loop values='data:posts' var='post'>
@@ -293,8 +293,8 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
         <h4>연재 목차</h4>
         <ul class='series' id='series'><li>불러오는 중…</li></ul>
       </div>
-      <b:section class='sidebar' id='sidebar' maxwidgets='3' showaddelement='yes'>
-        <b:widget id='Label1' locked='false' title='라벨' type='Label' version='2' visible='true'>
+      <b:section class='sidebar' id='sidebar' name='Sidebar' preferred='yes'>
+        <b:widget id='Label1' locked='false' title='라벨' type='Label' visible='true'>
           <b:widget-settings>
             <b:widget-setting name='sorting'>FREQUENCY</b:widget-setting>
             <b:widget-setting name='display'>CLOUD</b:widget-setting>
