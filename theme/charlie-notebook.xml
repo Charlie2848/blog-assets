@@ -192,7 +192,10 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
 
 /* ===== 네이비 모눈 배경(10/14) — 배경 위에 바로 놓인 글자는 밝게, 크림 상자는 그대로 ===== */
 .brand h1,.list-title,.progress,footer.site b{color:var(--on-bg)}
-.brand h1 span{color:var(--on-bg);background:linear-gradient(transparent 74%,var(--hl) 74%,var(--hl) 94%,transparent 94%)}
+.brand h1{text-shadow:3px 3px 0 rgba(42,157,143,.9)}
+.brand h1 span{color:var(--on-bg);background:none;position:relative;display:inline-block;padding-bottom:14px}
+.brand h1 span::after{content:"";position:absolute;left:2px;right:-6px;bottom:0;height:12px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 90 4 220 2 397 4 C 300 7 160 9 8 12 Z' fill='%23ffe58a'/%3E%3C/svg%3E") no-repeat center/100% 100%}
 .brand p,footer.site{color:var(--on-bg-soft)}
 footer.site{border-top-color:rgba(246,241,230,.22)}
 footer.site a{color:#a9c8f5;background:none}
