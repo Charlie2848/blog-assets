@@ -16,8 +16,8 @@
 
 /* ===== 테마 토큰 ===== */
 :root{
-  --paper:#fbf7ee; --paper-2:#f4eedf; --card:#fffdf7;
-  --ink:#2f2b26; --ink-soft:#6b6358; --line:rgba(96,140,190,.16);
+  --paper:#1f2b45; --paper-2:#f4eedf; --card:#fffdf7; --on-bg:#f6f1e6; --on-bg-soft:rgba(246,241,230,.72);
+  --ink:#2f2b26; --ink-soft:#6b6358; --line:rgba(255,255,255,.07);
   --teal:#2a9d8f; --amber:#f4a261; --hl:#ffe58a; --red:#e76f51; --blue:#4a7fc1;
   --sketch:255px 15px 225px 15px/15px 225px 15px 255px;
   --sketch-2:15px 255px 15px 225px/225px 15px 255px 15px;
@@ -49,7 +49,7 @@ nav.top{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 4px}
 nav.top a{font-family:var(--hand);font-size:21px;font-weight:700;color:var(--ink);background:none;
   padding:2px 14px;border:2px solid var(--ink);border-radius:var(--sketch);background:var(--card)}
 nav.top a:hover{background:var(--hl)}
-nav.top a.on{background:var(--ink);color:var(--paper)}
+nav.top a.on{background:var(--hl);color:var(--ink)}
 
 /* 진도 막대 */
 .progress{margin:18px 0 6px;display:flex;align-items:center;gap:12px;font-family:var(--hand);font-size:20px;font-weight:700}
@@ -189,6 +189,20 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
 .post-body img{max-width:100%;height:auto}
 
 .widget.Blog{margin:0;padding:0;border:0;background:none;box-shadow:none}
+
+/* ===== 네이비 모눈 배경(10/14) — 배경 위에 바로 놓인 글자는 밝게, 크림 상자는 그대로 ===== */
+.brand h1,.list-title,.progress,footer.site b{color:var(--on-bg)}
+.brand h1 span{color:var(--on-bg);background:linear-gradient(transparent 74%,var(--hl) 74%,var(--hl) 94%,transparent 94%)}
+.brand p,footer.site{color:var(--on-bg-soft)}
+footer.site{border-top-color:rgba(246,241,230,.22)}
+footer.site a{color:#a9c8f5;background:none}
+.card,article.post,.box,.widget.Label,.pager a,nav.top a,.more a,.progress .bar{border-color:#121a2c}
+.card{box-shadow:4px 5px 0 rgba(0,0,0,.28)}
+article.post{box-shadow:6px 7px 0 rgba(0,0,0,.25)}
+.box,.widget.Label{box-shadow:4px 5px 0 rgba(0,0,0,.25)}
+.card.ghost{background:rgba(255,253,247,.08);border-color:rgba(246,241,230,.45);color:var(--on-bg-soft);box-shadow:none}
+.card.ghost b{color:var(--on-bg)}
+
 
 ]]></b:skin>
 </head>
