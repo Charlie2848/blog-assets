@@ -40,8 +40,8 @@ img{max-width:100%;height:auto}
 .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 header.site{padding:34px 0 10px}
 .brand{display:flex;align-items:center;gap:18px}
-.avatar{width:84px;height:84px;flex:none;border-radius:50%;border:2.5px solid var(--ink);
-  background:#fff center/cover no-repeat;box-shadow:3px 4px 0 rgba(47,43,38,.15);transform:rotate(-3deg)}
+.avatar{width:96px;height:96px;flex:none;border-radius:50%;border:3px solid var(--ink);
+  background:var(--teal) center/cover no-repeat;box-shadow:0 0 0 5px var(--hl),5px 6px 0 5px rgba(47,43,38,.18);transform:rotate(-3deg)}
 .brand h1{margin:0;font-family:var(--hand);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1.05;letter-spacing:-.5px}
 .brand h1 span{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%);padding:0 4px}
 .brand p{margin:6px 0 0;color:var(--ink-soft);font-size:15px}
@@ -146,9 +146,9 @@ aside.side{display:flex;flex-direction:column;gap:26px}
 .box h4,.widget.Label h4{margin:0 0 10px;font-family:var(--hand);font-size:24px;font-weight:700}
 .box h4::after,.widget.Label h4::after{content:"";display:block;width:64px;height:6px;margin-top:2px;background:var(--hl);border-radius:4px;transform:rotate(-1.5deg)}
 .about{display:flex;gap:12px;align-items:center;font-size:14.5px;line-height:1.6}
-.about .avatar{width:64px;height:64px;transform:rotate(3deg)}
-.days{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;font-family:var(--hand);font-size:15px;text-align:center}
-.days span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(47,43,38,.35);border-radius:6px 3px 7px 4px;color:var(--ink-soft);background:#fff}
+.about .avatar{width:64px;height:64px;border-width:2.5px;box-shadow:0 0 0 3.5px var(--hl),3px 4px 0 3px rgba(47,43,38,.15);transform:rotate(3deg)}
+.days{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;font-family:var(--hand);font-size:15px;text-align:center}
+.days span{aspect-ratio:1;min-width:0;line-height:1;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(47,43,38,.35);border-radius:6px 3px 7px 4px;color:var(--ink-soft);background:#fff}
 .days span.done{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:700}
 .days span.today{border:2px dashed var(--red);color:var(--red);font-weight:700}
 .days-legend{margin-top:8px;font-size:13px;color:var(--ink-soft)}
@@ -168,7 +168,7 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
 /* 모바일 */
 @media (max-width:600px){
   body{font-size:16px}
-  .brand{gap:12px} .avatar{width:64px;height:64px}
+  .brand{gap:14px} .avatar{width:72px;height:72px;box-shadow:0 0 0 4px var(--hl),3px 4px 0 4px rgba(47,43,38,.18)}
   .brand h1{font-size:32px}
   .brand p{font-size:14px}
   nav.top a{font-size:18px;padding:1px 10px}
@@ -196,7 +196,7 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
 <div class='wrap'>
   <header class='site'>
     <div class='brand'>
-      <div aria-label='찰리 프로필' class='avatar' role='img' style='background-image:url(https://cdn.jsdelivr.net/gh/Charlie2848/blog-assets@4cee898/profile/charlie_profile_b1.jpg)'></div>
+      <div aria-label='찰리 프로필' class='avatar' role='img' style='background-image:url(https://cdn.jsdelivr.net/gh/Charlie2848/blog-assets@e501037/profile/charlie_profile_b1_teal.jpg)'></div>
       <div>
         <h1><a expr:href='data:blog.homepageUrl' style='color:inherit;background:none'><span><data:blog.title/></span></a></h1>
         <p>폴리텍 청주 「피지컬AI 반도체 제조 실무과정」 8주, 하루 한 편씩 비유와 손그림으로 정리하는 복습 노트</p>
@@ -284,7 +284,7 @@ footer.site b{font-family:var(--hand);font-size:20px;color:var(--ink)}
       <div class='box'>
         <h4>쓰는 사람</h4>
         <div class='about'>
-          <div class='avatar' style='background-image:url(https://cdn.jsdelivr.net/gh/Charlie2848/blog-assets@4cee898/profile/charlie_profile_b1.jpg)'></div>
+          <div class='avatar' style='background-image:url(https://cdn.jsdelivr.net/gh/Charlie2848/blog-assets@e501037/profile/charlie_profile_b1_teal.jpg)'></div>
           <div><b>찰리</b><br/>반도체 비전공자. 8주 동안 매일 배운 걸 내 말로 다시 써 보는 중.</div>
         </div>
       </div>
