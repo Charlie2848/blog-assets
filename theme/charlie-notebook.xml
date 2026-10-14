@@ -206,6 +206,18 @@ article.post{box-shadow:6px 7px 0 rgba(0,0,0,.25)}
 .card.ghost{background:rgba(255,253,247,.08);border-color:rgba(246,241,230,.45);color:var(--on-bg-soft);box-shadow:none}
 .card.ghost b{color:var(--on-bg)}
 
+/* ===== 문의 양식(ContactForm1, 10/14 애드센스 준비) ===== */
+.widget.ContactForm{background:var(--card);border:2px solid #121a2c;border-radius:var(--sketch-2);padding:16px 18px;box-shadow:4px 5px 0 rgba(0,0,0,.25)}
+.widget.ContactForm h4{margin:0 0 10px;font-family:var(--hand);font-size:24px;font-weight:700}
+.widget.ContactForm h4::after{content:"";display:block;width:64px;height:6px;margin-top:2px;background:var(--hl);border-radius:4px;transform:rotate(-1.5deg)}
+.contact-form-widget input[type=text],.contact-form-widget textarea{width:100%;margin:0 0 8px;padding:8px 10px;font:inherit;font-size:15px;color:var(--ink);background:#fff;border:1.5px solid rgba(47,43,38,.35);border-radius:8px 4px 9px 5px}
+.contact-form-widget textarea{resize:vertical;min-height:96px}
+.contact-form-button-submit{font-family:var(--hand);font-size:19px;font-weight:700;padding:3px 18px;border:2px solid var(--ink);border-radius:var(--sketch);background:var(--hl);color:var(--ink);cursor:pointer}
+.contact-form-button-submit:hover{background:#ffd95a}
+.contact-form-error-message,.contact-form-success-message{margin:6px 0 0;font-size:14px;line-height:1.5}
+.contact-form-error-message{color:var(--red)} .contact-form-success-message{color:var(--teal)}
+footer.site a{margin:0 2px}
+
 
 ]]></b:skin>
 </head>
@@ -222,7 +234,8 @@ article.post{box-shadow:6px 7px 0 rgba(0,0,0,.25)}
     <nav aria-label='블로그 메뉴' class='top'>
       <a expr:class='data:view.isHomepage ? "on" : ""' expr:href='data:blog.homepageUrl'>홈</a>
       <a expr:href='data:blog.homepageUrl + "search/label/%ED%94%BC%EC%A7%80%EC%BB%ACAI%EB%B0%98%EB%8F%84%EC%B2%B4%EA%B3%BC%EC%A0%95?max-results=50"'>전체 노트</a>
-      <a href='https://www.blogger.com/profile/14778092391773223709'>쓰는 사람</a>
+      <a expr:href='data:blog.homepageUrl + "p/about.html"'>블로그 소개</a>
+      <a expr:href='data:blog.homepageUrl + "p/contact.html"'>문의하기</a>
     </nav>
     <div aria-label='진도' class='progress'>
       <span>진도</span>
@@ -330,11 +343,26 @@ article.post{box-shadow:6px 7px 0 rgba(0,0,0,.25)}
             </div>
           </b:includable>
         </b:widget>
+        <b:widget id='ContactForm1' locked='false' title='문의하기' type='ContactForm' version='2' visible='true'>
+          <b:includable id='main'>
+            <h4 id='contact'>문의하기</h4>
+            <div class='contact-form-widget'>
+              <form name='contact-form'>
+                <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' placeholder='이름' size='30' type='text' value=''/>
+                <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' placeholder='이메일 (답장 받을 곳) *' size='30' type='text' value=''/>
+                <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' placeholder='메시지 *' rows='5'/>
+                <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' type='button' value='보내기'/>
+                <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
+                <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
+              </form>
+            </div>
+          </b:includable>
+        </b:widget>
       </b:section>
     </aside>
   </div>
 
-  <footer class='site'><b><data:blog.title/></b><br/>강의를 듣고 내가 다시 정리한 노트야. 슬라이드·녹음 원문은 싣지 않아. · <a expr:href='data:blog.homepageUrl + "p/blog-page.html"'>개인정보처리방침</a></footer>
+  <footer class='site'><b><data:blog.title/></b><br/>강의를 듣고 내가 다시 정리한 노트야. 슬라이드·녹음 원문은 싣지 않아. <br/><a expr:href='data:blog.homepageUrl + "p/about.html"'>블로그 소개</a> · <a expr:href='data:blog.homepageUrl + "p/contact.html"'>문의하기</a> · <a expr:href='data:blog.homepageUrl + "p/blog-page.html"'>개인정보처리방침</a></footer>
 </div>
 <script>//<![CDATA[
 /* 찰리의 반도체 따라잡기 — 손그림 노트 테마 스크립트 (Blogger XML에 그대로 들어감) */
